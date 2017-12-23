@@ -4,7 +4,7 @@ const picker = require('./lib/picker');
 process.on('unhandledRejection', rej => console.error(rej));
 
 async function foo () {
-  const plan = {
+  let plan = {
     url: 'https://www.iplaysoft.com/',
     headers: {},
     list: [
@@ -46,6 +46,13 @@ async function foo () {
         ]
       }
     ]
+  };
+  plan = {
+    url: 'https://www.iplaysoft.com/',
+    list: [{
+      item: '.breadcrumb a',
+      save: 'text'
+    }]
   };
   result = await picker(plan);
   console.log(result);
